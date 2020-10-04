@@ -28,10 +28,10 @@ void Queue::add_f(Ingridient i){
 
     new_array[this->size - 1] = i; // добавляем новый элемент в конец
 
-
+    delete[] this->queue;
     this->queue_ = new Ingridient[this->size]; // создаем наш массив нового размера
     this->queue_= new_array; // присваиваем заполненный массив с новым элементом\
-    delete[] new_array;
+    
 }
 void Queue::delete_f(int index){
     if (index < this->size){
@@ -41,13 +41,15 @@ void Queue::delete_f(int index){
             new_array[i] = this->queue_[i]; // в новый массив записываем все элементы из старого находящиеся до необходимого нам элемента для удаления
         for (int i = index; i < size; i++)
             new_array[i] = this->queue_[i + 1]; // в новый массив записываем все элементы из старого находящиеся до необходимого нам элемента для удаления
+        delete[] this->queue;
         this->queue_ = new Ingridient[size]; // создаем наш массив нового размера
         this->queue_ = new_array; // присваиваем заполненный массив без элемента для удаления
-        delete[] new_array;
+        
     }
 }
 void Queue::clean_f()
 {
+    delete[] this->queue;
     this->queue_ = new Ingridient[0];
     this->size = 0;
 }
