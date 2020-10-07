@@ -131,6 +131,7 @@ void Queue::setIteratorIndex(int index){
 void Queue::setIteratorValue(Ingridient i){
     if (i.getQuanity() >= 0){
         this->iterator.second = i;
+        this->queue_[getIteratorIndex()] = i;
     }
 }
 
