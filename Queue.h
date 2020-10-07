@@ -1,6 +1,8 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#pragma once
+#include <string>
 #include "Ingridient.h"
+
+using namespace std;
 
 class Queue
 {
@@ -8,21 +10,27 @@ public:
     Queue();
     Queue(const Queue& Q);
 
-    void add_f(Ingridient i);
-    void delete_f(int index);
-    void clean_f();
+    int add(Ingridient i);
+    int remove(int index);
+    int clean();
 
-    int get_size();
+    int getSize();
 
     Ingridient get(Ingridient *iterator);
 
-    Ingridient *iterator;
+    int toFile();
+    int intoFile();
 
-    void toFile();
-    void intoFile();
+    void setIteratorIndex(int index);
+    void setIteratorValue(Ingridient i);
+
+    int getIteratorIndex();
+    Ingridient getIteratorValue();
+
+    bool equal(Ingridient one, Ingridient two);
 private:
+    pair<int,Ingridient> iterator;
     Ingridient *queue_;
     int size;
 };
 
-#endif // QUEUE_H
