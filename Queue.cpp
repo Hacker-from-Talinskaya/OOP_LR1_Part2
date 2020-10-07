@@ -82,7 +82,7 @@ int Queue::toFile()
     QJsonDocument stack_doc(array); // добавляем наш массив в документ, из которо , собственно, мы и преобразуем в строку наш контейнер , которую позже запишем в файл
 
 
-    ofstream out("/home/vldmr_bs/oop_lab2/queue_.txt");
+    ofstream out("queue_.txt");
     if (out.is_open())
     {
         out << stack_doc.toJson().toStdString() << endl; // запись в файл , заметьте, функция .tоJson() - преобразует документ в QString , но так как для записи используем обычный плюсовый инструмент, то он не знает ни о каких QString, и нам надо ее преобразовать в string
@@ -95,7 +95,7 @@ int Queue::intoFile()
 {
     string line, stack = "";
 
-    ifstream in("/home/vldmr_bs/oop_lab2/queue_.txt"); // окрываем файл для чтения
+    ifstream in("queue_.txt"); // окрываем файл для чтения
     if (in.is_open()) // сама
     {
         while (getline(in, line))
